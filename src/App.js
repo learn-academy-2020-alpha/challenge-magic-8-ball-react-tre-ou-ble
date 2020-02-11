@@ -6,7 +6,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       // Add magic 8 ball outcomes to the array
-      answerArray: [],
+      answerArray: ["Yae", "Nae", "Maebe", "Haply sir", "Hell ne'r", "Why not?", "Bid me l8er"],
       question: ""
     }
   }
@@ -15,8 +15,9 @@ class App extends React.Component {
     // destructures answerArray out of state
     const { answerArray } = this.state
     // write your code here!
+    let num = Math.floor((Math.random()*this.state.answerArray.length))
     // Update the return statement below to reflect the outcome of your code.
-    return this.state.question
+    return this.state.answerArray[num]
   }
 
   handleChange = (e) => {
@@ -35,18 +36,39 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <h1>Magic 8 Ball</h1>
+      <audio controls="controls" autoplay>
+  <source src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Cello_Live_Performance_John_Michel_Tchaikovsky_Violin_Concerto_3rd_MVT_applaused_cut.ogg" type="audio/mp3" />
+  Your browser does not support the audio element.
+</audio>
+        <br />
+        <h1>Magic 8 Ballllin' WOW</h1>
+        <br />
+        <br />
         <input
           id="inputBox"
           type='text'
+          placeholder="Type here!"
           onChange={ this.handleChange }
         />
         <br />
-        <button onClick={ this.handleSubmit }>
-          Ask the Magic 8 Ball a Question
+        <br />
+        <br />
+        <button className="myButton" onClick={ this.handleSubmit }>
+          Click here and hover over the ball!
         </button>
-        <p> { this.state.answer } </p>
+
+        <div className="shadow"></div>
+        <div className="epos">
+        <div className="eball">
+          <div className="egrad"></div>
+          <div className="ewin"></div>
+          <div className="triangle"></div>
+          <div className="textbox" >{ this.state.answer }
+        </div>
+        </div>
+        </div>
       </div>
+
     )
   }
 }
